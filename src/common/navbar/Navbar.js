@@ -8,8 +8,8 @@ import basket from './img/shopping-basket.png'
 import { SideBar } from '../sideBar';
 
 class Navbar extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = { 
             authenticated: localStorage.getItem('appToken') !== null,
             sideBar: false
@@ -47,7 +47,7 @@ class Navbar extends Component {
                     </a>
                 </li>
                 <li className="nav-item">
-                     <img class="basket" src={basket} onClick={this.sideBarOpen}/>
+                     <img className="basket" src={basket} onClick={this.sideBarOpen} alt='basket'/>
                 </li>
                 </ul>
             ) 
@@ -69,8 +69,6 @@ class Navbar extends Component {
         }
     }
 
-
-
     render() { 
         return ( 
             <React.Fragment>
@@ -79,7 +77,7 @@ class Navbar extends Component {
                 <Link 
                 className="navbar-brand"
                 to="/">
-                    <img className="logo" src={logo}/>
+                    <img className="logo" src={logo} alt='logo'/>
                 </Link>
                 </div>
                 <div className="auth" id="navbarNav">
@@ -91,6 +89,8 @@ class Navbar extends Component {
             <SideBar 
             isOpen={this.state.sideBar}
             close={this.sideBarClose}
+            data={this.props.data}
+            delete={this.props.delete}
             ></SideBar>
             </React.Fragment>
          );

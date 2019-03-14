@@ -52,7 +52,7 @@ class Login extends Component {
                         return (
                             <div className="login-view">
                             <form className="form-login" onSubmit={e => this.handleForm(e, login)}>
-                                <img className="img-login" src={mexico}/>
+                                <img className="img-login" src={mexico} alt='mexico'/>
                                 <p className="p-1">Bienvenid@ a Rappi</p>
                                 <p className="p-2">Toda tu ciudad en minutos</p>
                                 <p className="p-3">Ingresa con</p>

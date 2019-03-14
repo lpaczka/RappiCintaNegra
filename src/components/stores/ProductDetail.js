@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
-import loader from '../home/img/lg.dual-ring-loader.gif'
 import './stores.css'
 import Modal from 'react-modal';
 import close from '../../img/close.png'
-import {SideBar} from '../../common/sideBar'
-
 
 const GETPRODUCT = gql`
 query getStoreById($id:ID!){
@@ -88,10 +85,10 @@ class ProductDetail extends Component {
                                     contentLabel="Example Modal"
                                 >
                                     <div className="bg-image">
-                                        <img src={data.getProductById.img_product}></img>
+                                        <img src={data.getProductById.img_product} alt="modal"></img>
                                     </div>
                                     <div className="info-product-modal">
-                                        <img class="close" src={close} onClick={this.props.close}></img>
+                                        <img className="close" src={close} onClick={this.props.close} alt="exit"></img>
                                         <div className="info-product-modal-descriptions">
                                             <h3 className="name-product">{data.getProductById.name_product}</h3>
                                             <p className="description-product">{data.getProductById.description_product}</p>
@@ -101,7 +98,7 @@ class ProductDetail extends Component {
                                             <textarea className="input-details-product" type="text" placeholder="Personaliza tu pedido"></textarea>
                                         </div>
                                         <div>
-                                            <button id="btn-addSideBar" className="boton-modal" type="submit" value={data.getProductById._id} onClick={this.idProduct}>Agregar {`$${data.getProductById.price}.00`}</button>
+                                            <button id="btn-addSideBar" className="boton-modal" type="submit" value={data.getProductById._id} onClick={this.props.basket}>Agregar {`$${data.getProductById.price}.00`}</button>
                                         </div>
                                     </div>
                                 </Modal>

@@ -6,7 +6,6 @@ import { Query } from 'react-apollo'
 import loader from '../home/img/lg.dual-ring-loader.gif'
 import StorePresetation from './StorePresentation'
 import {Footer} from '../../common/footer'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ProductDetail from './ProductDetail'
   
 const STORE = gql`
@@ -60,7 +59,7 @@ class Stores extends Component {
                     {
                         ({ data, error, loading }) => {
                             if (error) alert(error)
-                            if (loading) return <img src={loader}></img>
+                            if (loading) return <img src={loader} alt="loader"></img>
                             let category = data.getStoreById.products.map(el => {
                                 return el.category
                             })
@@ -88,7 +87,7 @@ class Stores extends Component {
                                                 {
                                                     ({ data, error, loading }) => {
                                                         if (error) alert(error)
-                                                        if (loading) return <img src={loader}></img>
+                                                        if (loading) return <img src={loader} alt="loader"></img>
                                                         let category = data.getStoreById.products.map(el => {
                                                             return el.category
                                                         })
@@ -114,6 +113,7 @@ class Stores extends Component {
                                                            return(
                                                                <React.Fragment>
                                                                     <ProductCard
+                                                                    key={el._id}
                                                                     mod={this.handleModal}
                                                                     id={el._id}
                                                                     name={el.name_product}
@@ -128,7 +128,6 @@ class Stores extends Component {
                                                         return (
                                                             <div className="cards-products">
                                                                 {StoreCardsByCategory}
-                                                                {this.handleModal}
                                                             </div>
                                                         )
                                                     }
@@ -139,7 +138,7 @@ class Stores extends Component {
                                                 {
                                                     ({ data, error, loading }) => {
                                                         if (error) alert(error)
-                                                        if (loading) return <img src={loader}></img>
+                                                        if (loading) return <img src={loader} alt="loader"></img>
                                                         let category = data.getStoreById.products.map(el => {
                                                             return el.category
                                                         })
@@ -161,6 +160,7 @@ class Stores extends Component {
                                                         let StoreCardsByCategory = ProductsByCategory[0].map(el => (
                                                             
                                                             <ProductCard
+                                                                key={el._id}
                                                                 mod={this.handleModal}
                                                                 id={el._id}
                                                                 name={el.name_product}
@@ -184,7 +184,7 @@ class Stores extends Component {
                                                 {
                                                     ({ data, error, loading }) => {
                                                         if (error) alert(error)
-                                                        if (loading) return <img src={loader}></img>
+                                                        if (loading) return <img src={loader} alt="loader"></img>
                                                         let category = data.getStoreById.products.map(el => {
                                                             return el.category
                                                         })
@@ -206,6 +206,7 @@ class Stores extends Component {
                                                         let StoreCardsByCategory = ProductsByCategory[1].map(el => (
                                                     
                                                             <ProductCard
+                                                                key={el._id}
                                                                 mod={this.handleModal}
                                                                 id={el._id}
                                                                 name={el.name_product}
@@ -229,6 +230,7 @@ class Stores extends Component {
                                             detail={this.state.modal}
                                             close={this.handleModalClose}
                                             id={this.state.id_product}
+                                            basket={this.props.basket}
                                         />
                                     </div>
                                     <Footer/>

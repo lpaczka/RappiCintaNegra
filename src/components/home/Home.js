@@ -23,30 +23,27 @@ const ALLSTORES = gql`
 `;
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() { 
         return (
             <div className="Home">
-            <img src={imageHome} className="home-image"/>
+            <img src={imageHome} className="home-image" alt='home'/>
             <div className="upgrades-rappi">
                 <div className="upgrade-single">
-                    <img className="img-upgrade" src={time}/>
+                    <img className="img-upgrade" src={time} alt='time'/>
                     <div>
                         <h3 className="title-upgrade">Ahorra tiempo</h3>
                         <p className="text-upgrade">Recibe tu súper en casa en menos de 1 hora</p>
                     </div>
                 </div>
                 <div className="upgrade-single">
-                    <img className="img-upgrade" src={love}/>
+                    <img className="img-upgrade" src={love} alt='love'/>
                     <div>
                         <h3 className="title-upgrade">En manos expertas</h3>
                         <p className="text-upgrade">Un shopper selecciona tus productos con amor</p>
                     </div>
                 </div>
                 <div className="upgrade-single">
-                    <img className="img-upgrade" src={quality}/>
+                    <img className="img-upgrade" src={quality} alt='quality'/>
                     <div>
                         <h3 className="title-upgrade">Calidad 100%</h3>
                         <p className="text-upgrade">Si no te gusta el estado de un producto, ¡no lo pagas!</p>
@@ -61,15 +58,14 @@ class Home extends Component {
                         {
                             ({data, error, loading}) => {
                                 if(error) return <h4>{error}</h4>
-                                if(loading) return <img className="loader-stores" src={loader}/>
+                                if(loading) return <img className="loader-stores" src={loader} alt='loader'/>
                                 const store = data.Stores.map(stores => (
-                                    <div>
                                         <StoreCard
                                             id={stores._id}
                                             img={stores.img_store}
                                             name={stores.name}
-                                        />
-                                    </div>
+                                            key={stores._id}
+                                        />     
                                 ))
                                 return(
                                     <React.Fragment>
@@ -87,14 +83,14 @@ class Home extends Component {
                     <h4>Lo que quieras</h4>
                     <p>Tu restaurante secreto o cualquier tienda que conozcas</p>
                 </div>
-                    <img className="img-stores-special" src={dona}/>
+                    <img className="img-stores-special" src={dona} alt="dona"/>
                 </div>
                 <div className="rappifavor">
                 <div className="text-stores-special info-rappifavor">
                     <h4>Rappi Favor</h4>
                     <p>Lo que necesites que requiera tiempo</p>
                 </div>
-                    <img className="img-stores-special" src={message}/>
+                    <img className="img-stores-special" src={message} alt="message"/>
                 </div>
             </section>
             <Footer/>

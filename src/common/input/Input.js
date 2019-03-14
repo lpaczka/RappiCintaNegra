@@ -22,7 +22,6 @@ class Input extends Component {
             <React.Fragment>
                 <input id={this.props.id} 
                 type={this.props.type}
-                className="validate"
                 value={this.props.value}
                 required={this.props.required}
                 onChange={this.props.setInput}

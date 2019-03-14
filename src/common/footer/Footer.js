@@ -10,20 +10,20 @@ const Footer = () => (
     <React.Fragment>
     <div className="upgrades-rappi footer-updrades">
     <div className="upgrade-single">
-        <img className="img-upgrade" src={map}/>
-        <div class="text-footer-upgrades">
+        <img className="img-upgrade" src={map} alt="map"/>
+        <div className="text-footer-upgrades">
             <p className="text-upgrade">Entregas inmediatas con seguimiento en vivo</p>
         </div>
     </div>
     <div className="upgrade-single">
-        <img className="img-upgrade" src={recibo}/>
-        <div class="text-footer-upgrades">
+        <img className="img-upgrade" src={recibo} alt="recibo"/>
+        <div className="text-footer-upgrades">
             <p className="text-upgrade">Paga en efectivo o tarjeta sin mínimo de compra</p>
         </div>
     </div>
     <div className="upgrade-single">
-        <img className="img-upgrade" src={corazon}/>
-        <div class="text-footer-upgrades">
+        <img className="img-upgrade" src={corazon} alt="corazon"/>
+        <div className="text-footer-upgrades">
             <p className="text-upgrade">Más de 5 millones de pedidos entregados</p>
         </div>
     </div>
@@ -67,11 +67,11 @@ const Footer = () => (
             <h4>Descarga el App</h4>
         </div>
         <div className="div-image-footer">
-            <img src={app}></img>
+            <img src={app} alt="app"></img>
         </div>
         <h4 className="div-image-footer">Síguenos</h4>
         <div className="div-image-footer">
-            <img src={redes}></img>
+            <img src={redes} alt="redes"></img>
         </div>
         </div>
         </div>

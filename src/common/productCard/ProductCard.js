@@ -11,7 +11,7 @@ const ProductCard = props => {
             <span className="product-price">{`$${props.price}.00`}</span>
         </div>
         <div className="card-img" id={props.id}>
-            <img src={props.img}/>
+            <img src={props.img} alt={props.name}/>
         </div>
         </div>
     )

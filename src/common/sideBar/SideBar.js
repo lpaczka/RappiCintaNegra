@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { bubble as Menu } from 'react-burger-menu'
-import shopping from '../navbar/img/shopping-basket.png'
 import './sidebar.css'
 import SidebarCard from './SidebarCard';
 
@@ -9,7 +8,8 @@ class SideBar extends Component {
         super(props)
         this.state = {
             menuOpen: props.isOpen,
-            products:"5c7607db8721dd36f4e60aac"
+            products:"5c7607db8721dd36f4e60aac",
+            suma:[]
         }
     }
 
@@ -20,10 +20,10 @@ class SideBar extends Component {
                products: "5c7607db8721dd36f4e60aac"
             });
         }
-        if(this.props.product !== this.state.products) {
+        if(this.props.data !== this.state.products) {
             this.setState({
                 menuOpen: this.props.isOpen,
-                products: this.props.product
+                products: this.props.data
             });
         }
     }
@@ -39,25 +39,42 @@ class SideBar extends Component {
     }
 
     renderProducts = () => {
-        console.log(this.state)
-        if(this.state.products === '5c7607db8721dd36f4e60aac' || this.state.products === undefined){
+        if(this.state.products.length === 0 || this.state.products === "5c7607db8721dd36f4e60aac"){
             return(
                 <React.Fragment>
                     <div className="basket-null">
                     <p>Tu canasta está vacía</p>
-                    <img className="animated" src="https://qotoqot.com/sad-animations/img/400/silent_tears/silent_tears.gif"></img>
+                    <img className="animated" src="https://qotoqot.com/sad-animations/img/400/silent_tears/silent_tears.gif" alt='cry'></img>
                     </div>
                 </React.Fragment>
             )
         }else{
             return(
-                // this.state.products.map(el => (
-                //     <SidebarCard
-                //         id={el}
-                //     />))
-                <p>Llevas algo</p>
+                this.state.products.map(el => (
+                    <SidebarCard
+                        id={el}
+                        key={el}
+                        delete={this.props.delete}
+                    />))
                 )   
         }
+    }
+
+    sumAllProducts = () => {
+            let ids = Array.from(document.querySelectorAll('.value-product-hidden'))
+            let sum = ids.map(el => el.defaultValue)
+            let len = sum.length
+            console.log(len)
+            if(len === 0){
+                return <p>$0.00</p>
+            }
+            if(len === 1){
+                return <p>$10.00</p>
+            }
+            if(len >= 2){
+                let sum2 = sum.reduce((a,b) => parseInt(a,10) + parseInt(b,10))
+                return <p>{sum2}</p>
+            }
     }
 
     render() {
@@ -76,7 +93,7 @@ class SideBar extends Component {
                             <p>Tu orden en</p>
                             <h3>Rappi</h3>
                             <p>Dirección de envío Guanajuato 65</p>
-                            <button type="button" class="btn btn-outline-danger boton-exit-sidebar" onClick={this.closeMenu}>Cerrar</button>
+                            <button type="button" className="btn btn-outline-danger boton-exit-sidebar" onClick={this.closeMenu}>Cerrar</button>
                             <div className="info-type-store">
                                 <h3 className="type-store">Restaurantes</h3>
                             </div>
@@ -87,7 +104,7 @@ class SideBar extends Component {
                         <div className="info-subtotal">
                             <div className="detail-subtotal">
                                 <p>Subtotal:</p>
-                                <p>$165.00</p>
+                                {this.sumAllProducts()}
                             </div>
                             <button className="boton-sidebar-continuar" type="submit">Continuar</button>
                         </div>

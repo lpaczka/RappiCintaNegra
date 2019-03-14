@@ -5,7 +5,7 @@ const StorePresetation = props => {
     return(
         <div className="StorePresetation">
             <div className="img-store">
-                <img src={props.img}></img>
+                <img src={props.img} alt="img-store"></img>
             </div>
             <div className="body-store">
             <div className="info-store">

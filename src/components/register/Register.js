@@ -27,7 +27,6 @@ const SINGUP = gql`
 class Register extends React.Component {
 
     handleSignUp = (userData, signup) => {
-        console.log('DATA--', userData);
         signup({ variables: { ...userData } })
     }
 
