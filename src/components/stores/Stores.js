@@ -6,8 +6,9 @@ import { Query } from 'react-apollo'
 import loader from '../home/img/lg.dual-ring-loader.gif'
 import StorePresetation from './StorePresentation'
 import {Footer} from '../../common/footer'
-// import ProductsByCategoryDiv from './ProductsByCategoryDiv'
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import ProductDetail from './ProductDetail'
+  
 const STORE = gql`
     query getStoreById($id:ID!){
   getStoreById(id:$id){
@@ -16,6 +17,7 @@ const STORE = gql`
     img_store
     pricing_domicile
     products{
+      _id
       name_product
       price
       img_product
@@ -30,8 +32,25 @@ class Stores extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id:props.match.params.id
+            id:props.match.params.id,
+            url:props.match.url,
+            modal:false,
+            id_product:null
         }
+    }
+    
+    handleModal = id => {       
+           this.setState({
+                modal:true,
+                id_product:id
+           })
+    }
+
+    handleModalClose = () => {
+        this.setState({
+            modal:false,
+            id_product:"5c85ab7d85776e27d4c77410"
+        })
     }
 
     render() {
@@ -73,9 +92,9 @@ class Stores extends Component {
                                                         let category = data.getStoreById.products.map(el => {
                                                             return el.category
                                                         })
-                                                        console.log(category)
+                                                        
                                                         let uniqueCategory = [];
-                                                        console.log(uniqueCategory)
+                                                        
                                                         category.forEach(elem => {
                                                             if (!uniqueCategory.some(valor => valor[0] === elem[0] && valor[1] === elem[1]))
                                                                 uniqueCategory.push(elem);
@@ -91,21 +110,25 @@ class Stores extends Component {
                                                             })
                                                         })
                                                         let StoreCardsByCategory = ProductsByCategory[2].map(el => {
-                                                            console.log(el)
+                                                          
                                                            return(
-                                                               <ProductCard
+                                                               <React.Fragment>
+                                                                    <ProductCard
+                                                                    mod={this.handleModal}
                                                                     id={el._id}
                                                                     name={el.name_product}
                                                                     description={el.description_product}
                                                                     price={el.price}
                                                                     img={el.img_product}
                                                                 /> 
+                                                               </React.Fragment> 
                                                            )
                                                         }
                                                         )
                                                         return (
                                                             <div className="cards-products">
                                                                 {StoreCardsByCategory}
+                                                                {this.handleModal}
                                                             </div>
                                                         )
                                                     }
@@ -136,13 +159,16 @@ class Stores extends Component {
                                                             })
                                                         })
                                                         let StoreCardsByCategory = ProductsByCategory[0].map(el => (
+                                                            
                                                             <ProductCard
+                                                                mod={this.handleModal}
                                                                 id={el._id}
                                                                 name={el.name_product}
                                                                 description={el.description_product}
                                                                 price={el.price}
                                                                 img={el.img_product}
                                                             />
+                                                          
                                                         )
                                                         )
                                                         return (
@@ -178,13 +204,16 @@ class Stores extends Component {
                                                             })
                                                         })
                                                         let StoreCardsByCategory = ProductsByCategory[1].map(el => (
+                                                    
                                                             <ProductCard
+                                                                mod={this.handleModal}
                                                                 id={el._id}
                                                                 name={el.name_product}
                                                                 description={el.description_product}
                                                                 price={el.price}
                                                                 img={el.img_product}
                                                             />
+                                                          
                                                         )
                                                         )
                                                         return (
@@ -196,6 +225,11 @@ class Stores extends Component {
                                                 }
                                             </Query>
                                         </div>
+                                        <ProductDetail
+                                            detail={this.state.modal}
+                                            close={this.handleModalClose}
+                                            id={this.state.id_product}
+                                        />
                                     </div>
                                     <Footer/>
                                 </React.Fragment>

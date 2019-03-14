@@ -15,7 +15,7 @@
     z-index: 100;
 }
 .auth{
-    margin-right: 50px;
+    margin-right: 30px;
 }
 .navbar-nav{
     display: flex;
@@ -36,4 +36,9 @@
 }
 .branding{
     margin-left: 30px;
+}
+.basket{
+    width: 25px;
+    margin-left: 15px;
+    cursor: pointer;
 }

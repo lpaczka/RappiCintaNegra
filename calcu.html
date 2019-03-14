@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lato');
+
+        *{
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .app{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .ingresa{
+            width: 300px;
+            height: 20px;
+            border: none;
+            border:solid 2px  rgb(107, 219, 176);
+        }
+        .boton-calcular{
+            width: 100px;
+            height: 28px;
+            background: linear-gradient(45deg,#6FE594,#27A47C);
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .caluculador{
+            margin-bottom: 10px;
+        }
+        .iconos-paises{
+            width: 48px;
+            height: 48px;
+        }
+        .modificador{
+            display: block;
+            padding-left: 10px;
+            margin-left: 17px;
+            margin-right: 0px;
+        }
+        .pais{
+            width: 300px;
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+        }
+        .viajeGratis{
+            margin-left: 4px;
+        }
+        .contenedor{
+            background: rgb(107, 219, 176);
+            color: white;
+            border-radius: 5px;
+            display: inline-block;
+            padding: 3px;
+            margin: 0px;
+            width: 140px;
+        }
+        .centrador{
+            width: 304px;
+            text-align: center;
+        }
+        .reloj{
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+    <div class="calculadora">
+    <div class="caluculador">
+    <input type="text" class="ingresa" id="dataRecive" placeholder="Ingresa los minutos">
+    <button id="calcular" class="boton-calcular">Calcular</button>
+    </div>
+    <div class="pais">
+        <div class="icono">
+            <label for="mexicoPais"><img class="iconos-paises" src="https://drive.google.com/uc?export=view&id=1JoAY5WPnvyBACLNHIHN1EufKkiAp-wzO" alt="mexico"></label>
+            <input type="radio" class="modificador" name="pais" id="mexicoPais" checked="checked">
+        </div>
+        <div class="icono">
+            <label for="colombiaPais"><img class="iconos-paises" src="https://drive.google.com/uc?export=view&id=1QaD5D9G0fR25u7m0ip4WE6lZDujDVXzC" alt="colombia"></label>
+            <input type="radio" class="modificador" name="pais" id="colombiaPais">
+        </div>
+        <div class="icono">
+            <label for="brasilPais"><img class="iconos-paises" src="https://drive.google.com/uc?export=view&id=1i0_usYEFlr0kV_v9mswtwz-P03ER66ZU" alt="brasil"></label>
+            <input type="radio" class="modificador" name="pais" id="brasilPais">
+        </div>
+        <div class="icono">
+            <label for="chilePais"><img class="iconos-paises" src="https://drive.google.com/uc?export=view&id=1guwLv3Yjkdq3FQc7DuZKU4lXBr9f6l-Y" alt="chile"></label>
+            <input type="radio" class="modificador" name="pais" id="chilePais">
+        </div>
+        <div class="icono">
+            <label for="uruguayPais"><img class="iconos-paises" src="https://drive.google.com/uc?export=view&id=1h31POB8MD_2XNVOwKWYj4PXl1Ke5TKQh" alt="uruguay"></label>
+            <input type="radio" class="modificador" name="pais" id="uruguayPais">
+        </div>
+        <div class="icono">
+            <label for="peruPais"><img class="iconos-paises" src="https://drive.google.com/uc?export=view&id=11a6hfSdDUFEycNqlh9GMXVY8-wYgkCFI" alt="peru"></label>
+            <input type="radio" class="modificador" name="pais" id="peruPais">
+        </div>
+    </div>
+    <div class="viajeGratis">
+        <div class="contenedor">
+            <input type="radio" name="viaje" id="gratisSi">
+            <label for="gratisSi">Con viaje gratis</label>
+        </div>
+        <div class="contenedor">
+            <input type="radio" name="viaje" id="gratisNo" checked="checked">
+            <label for="gratisNo">Sin viaje gratis</label>
+        </div>
+    </div>
+    <div class="centrador">
+    <h2 id="resultado"></h2>
+    </div>
+    </div>
+    <div class="reloj" id="reloj">
+            <div style="text-align:center;padding:1em 0;"> <h3><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/es/city/3530597"><span style="color:gray;">Hora actual en</span><br />Mexico City, México</a></h3> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FMexico_City" width="100%" height="115" frameborder="0" seamless></iframe> </div>
+    </div>
+    </div>
+    <script>
+        const resultado = document.getElementById('resultado'),
+              reloj = document.getElementById('reloj'),
+              relojCol = `<div style="text-align:center;padding:1em 0;"> <h3><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/es/city/3688689"><span style="color:gray;">Hora actual en</span><br />Bogotá, Colombia</a></h3> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FBogota" width="100%" height="115" frameborder="0" seamless></iframe> </div>`,
+              relojmxn = `<div style="text-align:center;padding:1em 0;"> <h3><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/es/city/3530597"><span style="color:gray;">Hora actual en</span><br />Mexico City, México</a></h3> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FMexico_City" width="100%" height="115" frameborder="0" seamless></iframe> </div>`,
+              relojBr = `<div style="text-align:center;padding:1em 0;"> <h3><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/es/city/3448439"><span style="color:gray;">Hora actual en</span><br />São Paulo, Brasil</a></h3> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FSao_Paulo" width="100%" height="115" frameborder="0" seamless></iframe> </div>`,
+              relojChl = `<div style="text-align:center;padding:1em 0;"> <h3><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/es/city/3871336"><span style="color:gray;">Hora actual en</span><br />Santiago, Chile</a></h3> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FSantiago" width="100%" height="115" frameborder="0" seamless></iframe> </div>`,
+              relojUru = `<div style="text-align:center;padding:1em 0;"> <h3><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/es/city/3441575"><span style="color:gray;">Hora actual en</span><br />Montevideo, Uruguay</a></h3> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FMontevideo" width="100%" height="115" frameborder="0" seamless></iframe> </div>`,
+              relojPer = `<div style="text-align:center;padding:1em 0;"> <h3><a style="text-decoration:none;" href="https://www.zeitverschiebung.net/es/city/3936456"><span style="color:gray;">Hora actual en</span><br />Lima, Perú</a></h3> <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=es&size=medium&timezone=America%2FLima" width="100%" height="115" frameborder="0" seamless></iframe> </div>`
+        class Pais{
+        constructor(nombre, precioDesbloqueo, precioMinuto, moneda){
+            this.nombre = nombre,
+            this.precioDesbloqueo = precioDesbloqueo,
+            this.precioMinuto = precioMinuto,
+            this.moneda = moneda
+        }
+        calcularMonto(min, gratis){
+            if(gratis === false){
+                if(min === 0){
+                    resultado.innerHTML = `$ ${this.precioDesbloqueo} ${this.moneda}`
+                }else{
+                    let resultadoSinCupon = ((min * this.precioMinuto) + this.precioDesbloqueo)
+                    resultado.innerHTML = `$ ${resultadoSinCupon} ${this.moneda}`
+                }
+            }else{
+                if(min <= 10){
+                    resultado.innerHTML = "Sin cobro"
+                }else{
+                    let resultadoConCupon = ((min - 10) * this.precioMinuto)
+                    resultado.innerHTML = `$ ${resultadoConCupon} ${this.moneda}`
+                    }
+                }
+            }
+        }
+    const mexico = new Pais("mexico", 10, 2, "Mxn"),
+          colombia = new Pais("colombia", 1500, 300, "Cop"),
+          chile = new Pais("chile", 200, 120, "Clp"),
+          brasil = new Pais("brasil", 3, 0.5, "Brl"),
+          uruguay = new Pais('uruguay', 19, 4, "Uyu"),
+          peru = new Pais("peru", 1, 0.6, "Pen")
+          input = document.querySelectorAll(".modificador")
+          
+    document.addEventListener('click', e => {
+        if(e.target.matches("#calcular")){
+            let minutos = document.getElementById('dataRecive').value,
+            minutoNumber = parseInt(minutos, 10),
+            inputMxn = document.getElementById("mexicoPais").checked,
+            inputCop = document.getElementById("colombiaPais").checked,
+            inputChl = document.getElementById("chilePais").checked,
+            inputBrl = document.getElementById("brasilPais").checked,
+            inputUru = document.getElementById("uruguayPais").checked
+            inputPen = document.getElementById('peruPais').checked
+            if(dataRecive.value === ""){
+                resultado.innerHTML = "Ingresa minutos wey"
+            }else{
+                if(inputMxn === true){
+                    mexico.calcularMonto(minutoNumber, gratisSi.checked, )
+                }else if(inputCop === true){
+                    colombia.calcularMonto(minutoNumber, gratisSi.checked)
+                }else if(inputChl === true){
+                    if(gratisSi.checked === false){
+                if(minutos <= 3){
+                    resultado.innerHTML = `Sin cobro`
+                }else{
+                    let resultadoSinCupon = (((minutos - 3) * 120) + 200)
+                    resultado.innerHTML = `$ ${resultadoSinCupon} CLP`
+                }
+                }else{
+                if(minutos <= 13){
+                    resultado.innerHTML = "Sin cobro"
+                }else{
+                    let resultadoConCupon = ((minutos - 13) * 120)
+                    resultado.innerHTML = `$ ${resultadoConCupon} CLP`
+                    }
+                }
+                }else if(inputBrl === true){
+                    brasil.calcularMonto(minutoNumber, gratisSi.checked)
+                }else if(inputUru === true){
+                    uruguay.calcularMonto(minutoNumber, gratisSi.checked)
+                }else if(inputPen === true){
+                    peru.calcularMonto(minutoNumber, gratisSi.checked)
+                }
+            dataRecive.value = ''
+            }
+        }
+        if(e.target.matches("#mexicoPais")){
+            reloj.innerHTML = ""
+            reloj.insertAdjacentHTML('beforeend', relojmxn)
+        }
+        if(e.target.matches("#colombiaPais")){
+            reloj.innerHTML = ""
+            reloj.insertAdjacentHTML('beforeend', relojCol)
+        }
+        if(e.target.matches("#brasilPais")){
+            reloj.innerHTML = ""
+            reloj.insertAdjacentHTML('beforeend', relojBr)
+        }
+        if(e.target.matches("#chilePais")){
+            reloj.innerHTML = ""
+            reloj.insertAdjacentHTML('beforeend', relojChl)
+        }
+        if(e.target.matches("#uruguayPais")){
+            reloj.innerHTML = ""
+            reloj.insertAdjacentHTML('beforeend', relojUru)
+        }
+        if(e.target.matches("#peruPais")){
+            reloj.innerHTML = ""
+            reloj.insertAdjacentHTML('beforeend', relojPer)
+        }
+    })
+    </script>
+</body>
+</html>

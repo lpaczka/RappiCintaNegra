@@ -27,5 +27,5 @@ export default [
     <Route exact path="/logout" component={Logout}/>,
     <Route exact path="/" component={Home}/>,
     <Route exact path="/signup" component={Register}/>,
-    <PrivateRoute exact path="/store/:id" component={Stores}/>
+    <PrivateRoute exact path="/store/:id" component={(props) => <Stores {...props} conse={props.basket}/>}/>
 ]

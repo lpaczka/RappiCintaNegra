@@ -4,6 +4,7 @@
 // import gql from 'graphql-tag'
 // import {Query} from 'react-apollo'
 // import loader from '../home/img/lg.dual-ring-loader.gif'
+// import './stores.css'
 
 // const STORE = gql`
 //      query{

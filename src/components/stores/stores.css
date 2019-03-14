@@ -3,6 +3,9 @@
     background:  #f7f7f7;
     height: 100vh;
 }
+.modal-product{
+    display: flex;
+}
 .StorePresetation{
     height: 140px;
     display: flex;
@@ -69,3 +72,92 @@
     justify-content: flex-start;
     margin-left: 60px;
 }
+.ref-product:hover{
+    text-decoration: none;
+    color:#333;
+}
+.ref-product{
+    color:#333;
+}
+.bg-image{
+    background-image: url("https://previews.123rf.com/images/weerapat/weerapat1403/weerapat140300115/26968872-madera-de-teca-textura-tabl%C3%B3n-con-los-patrones-naturales-de-teca-tabl%C3%B3n-pared-madera-de-teca.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 480px;
+}
+.bg-image > img {
+    max-width: 400px;
+    max-height: 400px;
+}
+.close{
+    width: 20px;
+    cursor: pointer;
+    position: absolute;
+    top:10px;
+    right: 10px;
+}
+.info-product-modal{
+    width: 400px;
+    position: relative;
+    padding: 25px;
+}
+.name-product{
+    color: #333;
+    font-size: 22px;
+}
+.description-product{
+    color: #333;
+    font-size: 15px;
+}
+.details-product{
+    color: #333;
+    font-size: 17px;
+}
+.input-details-product{
+    width: 100%;
+    resize: none;
+    height: 70px;
+    border: 1px solid #e5edef;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    background: #f7f7f7;
+    display: block;
+    padding: 8px 12px;
+    outline: none;
+}
+.info-product-modal-descriptions{
+    margin-bottom: 20px;
+}
+.boton-modal{
+    background-color: #1ec69f;
+    line-height: 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    padding: 0 20px;
+    width: 180px;
+    text-align: left;
+    outline:none;
+    border:0;
+    position: absolute;
+    bottom:20px;
+    right: 20px;
+    text-align: center;
+}
+.boton-modal:active,
+.boton-modal:visited,
+.boton-modal:focus {
+    border-style: outset;
+    outline:none;
+  }
+  .float{
+      float: right;
+      font-size: 14px;
+  }

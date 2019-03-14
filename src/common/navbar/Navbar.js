@@ -4,13 +4,32 @@ import payload from '../../payload';
 import isAuthenticated from '../../isAuthenticated';
 import logo from '../../img/rappi.png'
 import './navbar.css'
+import basket from './img/shopping-basket.png'
+import { SideBar } from '../sideBar';
 
 class Navbar extends Component {
     constructor() {
         super();
         this.state = { 
-            authenticated: localStorage.getItem('appToken') !== null
+            authenticated: localStorage.getItem('appToken') !== null,
+            sideBar: false
          }
+    }
+
+    sideBarOpen = () => {
+        this.setState({
+            sideBar: true
+        })
+    }
+
+    sideBarClose = () => {
+        this.setState({
+            sideBar: false
+        })
+    }
+
+    getIdProduct = (e) => {
+        console.log(e.target.value)
     }
 
     authenticatedRender = () => {
@@ -26,6 +45,9 @@ class Navbar extends Component {
                     <a className="nav-link" href="/logout">
                      Cerrar Sesión
                     </a>
+                </li>
+                <li className="nav-item">
+                     <img class="basket" src={basket} onClick={this.sideBarOpen}/>
                 </li>
                 </ul>
             ) 
@@ -51,6 +73,7 @@ class Navbar extends Component {
 
     render() { 
         return ( 
+            <React.Fragment>
             <nav className="navbar navbar-expand-ls">
                 <div className="branding">
                 <Link 
@@ -65,6 +88,11 @@ class Navbar extends Component {
                     }
                 </div>
             </nav>
+            <SideBar 
+            isOpen={this.state.sideBar}
+            close={this.sideBarClose}
+            ></SideBar>
+            </React.Fragment>
          );
     }
 }

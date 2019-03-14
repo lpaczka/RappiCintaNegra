@@ -6,6 +6,7 @@ div[class^="product_"]{
     justify-content: space-between;
     border-radius: 5px;
     position: relative;
+    cursor: pointer;
 }
 div[class^="product_"]:hover{
     transition: all .3s ease;
